@@ -441,14 +441,8 @@ observer.observe(document.body, {
 document.addEventListener('keydown', (e) => {
   if (matches.length === 0) return;
 
-  // F3 / Ctrl+G: 下一个
-  if (e.key === 'F3' || (e.ctrlKey && e.key === 'g')) {
-    e.preventDefault();
-    handleNavigate({ direction: 'next' });
-  }
-
-  // Shift+F3 / Ctrl+Shift+G: 上一个
-  if (e.shiftKey && (e.key === 'F3' || (e.ctrlKey && e.key === 'G'))) {
+  //Shift+Enter: 上一个
+  if (e.shiftKey && e.key === 'Enter') {
     e.preventDefault();
     handleNavigate({ direction: 'previous' });
   }

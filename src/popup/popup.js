@@ -106,7 +106,7 @@ function setupEventListeners() {
 
   // 输入框回车搜索
   patternInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+    if(e.key === 'Enter'){
       // 添加到历史记录
       const pattern = patternInput.value.trim();
       try {
@@ -114,7 +114,12 @@ function setupEventListeners() {
         validateRegex(pattern);
         addToHistory(pattern);
       } finally {
-        navigateToMatch('next')
+
+      }
+      if (e.shiftKey) {
+        navigateToMatch('previous');
+      }else{
+        navigateToMatch('next');
       }
     }
   });

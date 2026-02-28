@@ -1,58 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>正则表达式搜索</title>
   <link rel="stylesheet" href="popup.css">
 </head>
+
 <body>
   <div class="container">
-    <header class="header">
+    <header class="header" style="display: none;">
       <span class="title">🔍 正则表达式搜索</span>
       <div class="header-buttons">
         <button id="clearBtn" class="icon-btn" title="清除高亮">🗑</button>
-        <button id="closeBtn" class="icon-btn close-btn" title="关闭">✕</button>
+
       </div>
     </header>
 
     <div class="search-section">
       <div class="input-wrapper">
-        <input 
-          type="text" 
-          id="patternInput" 
-          placeholder="输入正则表达式..." 
-          class="pattern-input"
-          spellcheck="false"
-        >
+        <input type="text" id="patternInput" placeholder="输入正则表达式..." class="pattern-input" spellcheck="false">
+
         <button id="searchBtn" class="search-btn">搜索</button>
+
+        <button id="closeBtn" class="icon-btn close-btn" title="关闭">✕</button>
       </div>
-      
-      <div class="flags-container">
-        <label class="flag-label" title="g (global) - 全局匹配：查找所有匹配项，而不是在第一个匹配后停止">
-          <input type="checkbox" id="flagG" checked>
-          <span class="flag-checkbox">g</span>
-        </label>
-        <label class="flag-label" title="i (ignore case) - 忽略大小写">
-          <input type="checkbox" id="flagI" checked>
-          <span class="flag-checkbox">i</span>
-        </label>
-        <label class="flag-label" title="m (multiline) - 多行模式：改变 ^ 和 $ 的行为，使其匹配每行的开头和结尾，而不仅是整个字符串的开头和结尾">
-          <input type="checkbox" id="flagM" checked>
-          <span class="flag-checkbox">m</span>
-        </label>
-        <label class="flag-label" title="s (single line/dotall) - 单行模式：使点号 . 匹配包括换行符在内的所有字符">
-          <input type="checkbox" id="flagS">
-          <span class="flag-checkbox">s</span>
-        </label>
-        <label class="flag-label" title="u (unicode) - Unicode模式：启用完整的Unicode支持">
-          <input type="checkbox" id="flagU">
-          <span class="flag-checkbox">u</span>
-        </label>
-      </div>
-      
+
       <div id="errorMsg" class="error-msg hidden"></div>
     </div>
+
 
     <div class="result-section">
       <div class="result-info">
@@ -72,7 +49,8 @@
       <div class="history-header">
         <span class="history-title">📋 历史记录</span>
         <div class="history-actions">
-          <input type="number" id="historyLimitInput" class="history-limit-input" min="1" max="100" value="20" title="历史记录最大保存数量">
+          <input type="number" id="historyLimitInput" class="history-limit-input" min="1" max="100" value="20"
+            title="历史记录最大保存数量">
           <button id="clearHistoryBtn" class="small-btn">清空</button>
         </div>
       </div>
@@ -96,23 +74,52 @@
         </div>
       </details>
       <details class="help-details">
-        <summary>⚙️ 设置</summary>
-        <div class="settings-content">
-          <div class="setting-item">
-            <label for="maxMatchesInput">最大匹配数</label>
-            <input type="number" id="maxMatchesInput" class="setting-input" min="1" max="10000" value="1000">
-            <span class="setting-hint">限制搜索结果的数量（1-10000）</span>
+        <summary>匹配模式</summary>
+        <div class="mode-section">
+          <div class="flags-container">
+            <label class="flag-label" title="g (global) - 全局匹配：查找所有匹配项，而不是在第一个匹配后停止">
+              <input type="checkbox" id="flagG" checked>
+              <span class="flag-checkbox">g</span>
+            </label>
+            <label class="flag-label" title="i (ignore case) - 忽略大小写">
+              <input type="checkbox" id="flagI" checked>
+              <span class="flag-checkbox">i</span>
+            </label>
+            <label class="flag-label" title="m (multiline) - 多行模式：改变 ^ 和 $ 的行为，使其匹配每行的开头和结尾，而不仅是整个字符串的开头和结尾">
+              <input type="checkbox" id="flagM" checked>
+              <span class="flag-checkbox">m</span>
+            </label>
+            <label class="flag-label" title="s (single line/dotall) - 单行模式：使点号 . 匹配包括换行符在内的所有字符">
+              <input type="checkbox" id="flagS">
+              <span class="flag-checkbox">s</span>
+            </label>
+            <label class="flag-label" title="u (unicode) - Unicode模式：启用完整的Unicode支持">
+              <input type="checkbox" id="flagU">
+              <span class="flag-checkbox">u</span>
+            </label>
           </div>
         </div>
       </details>
+      <div class="settings-content">
+        <div class="setting-item">
+          <label for="maxMatchesInput">最大匹配数</label>
+          <input type="number" id="maxMatchesInput" class="setting-input" min="1" max="10000" value="1000">
+          <span class="setting-hint">限制搜索结果的数量（1-10000）</span>
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
       <span class="version">v0.1.0</span>
-      <span class="shortcuts">快捷键: Ctrl+Shift+F</span>
+      <span class="shortcuts">打开: Ctrl+Shift+F</span>
+      <span class="shortcuts">下一个: Enter</span>
+      <span class="shortcuts">上一个: Shift+Enter</span>
     </footer>
+
+
   </div>
 
   <script src="popup.js"></script>
 </body>
+
 </html>
