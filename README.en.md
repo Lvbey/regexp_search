@@ -10,6 +10,26 @@ A powerful Chrome extension that brings regular expression search capabilities t
 
 ## Features
 
+The window can be arbitrarily dragged, and the default simple interface does not obscure search results or interfere with web browsing.
+
+![Alt text](doc_assets/image-4.png)
+
+---
+
+Search results are highlighted in real-time as you type, and the scrollbar is marked with visual indicators to show where matches occur.
+
+![Alt text](doc_assets/image-5.png)
+
+---
+
+![Alt text](doc_assets/image-6.png)
+
+---
+
+you can customize the extension to your needs.
+
+![Alt text](doc_assets/image-7.png)
+
 ### Core Functionality
 - **Regex Search**: Search any webpage using regular expressions with full syntax support
 - **Real-time Matching**: See matches highlighted instantly as you type

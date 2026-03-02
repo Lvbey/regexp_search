@@ -14,7 +14,20 @@
 
 ![Alt text](doc_assets/image.png)
 
+---
+
+搜索结果效果
+
+![Alt text](doc_assets/image-2.png)
+
+---
+
+![Alt text](doc_assets/image-3.png)
+
+---
+
 按需可打开完整设置界面
+
 ![Alt text](doc_assets/image-1.png)
 
 ### 核心功能

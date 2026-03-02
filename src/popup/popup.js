@@ -502,7 +502,7 @@ async function copyResults() {
 
     // 显示成功提示
     const originalText = copyResultsBtn.innerHTML;
-    copyResultsBtn.innerHTML = '✓ ' + getMessage('copied');
+    copyResultsBtn.innerHTML = getMessage('copied');
     copyResultsBtn.style.backgroundColor = '#4caf50';
 
     setTimeout(() => {
