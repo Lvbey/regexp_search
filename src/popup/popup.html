@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>正则表达式搜索</title>
+  <title>__MSG_extensionName__</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
   <div class="container">
     <header class="header" style="display: none;">
-      <span class="title">🔍 正则表达式搜索</span>
+      <span class="title" data-i18n="extensionNameIcon">🔍 __MSG_extensionName__</span>
       <div class="header-buttons">
-        <button id="clearBtn" class="icon-btn" title="清除高亮">🗑</button>
+        <button id="clearBtn" class="icon-btn" data-i18n-title="clearMatches">🗑</button>
 
       </div>
     </header>
 
     <div class="search-section">
       <div class="input-wrapper">
-        <input type="text" id="patternInput" placeholder="输入正则表达式..." class="pattern-input" spellcheck="false">
+        <input type="text" id="patternInput" data-i18n-placeholder="searchPlaceholder" class="pattern-input" spellcheck="false">
 
-        <button id="searchBtn" class="search-btn">搜索</button>
+        <button id="searchBtn" class="search-btn" data-i18n="searchButton">__MSG_searchButton__</button>
 
-        <button id="closeBtn" class="icon-btn close-btn" title="关闭">✕</button>
+        <button id="toggleBtn" class="icon-btn toggle-btn" data-i18n-title="toggleButton">▼</button>
+
+        <button id="closeBtn" class="icon-btn close-btn" data-i18n-title="closeButton">✕</button>
       </div>
 
       <div id="errorMsg" class="error-msg hidden"></div>
     </div>
 
-
-    <div class="result-section">
+    <div id="collapsibleContent" class="collapsible-content collapsed">
+      <div class="result-section">
       <div class="result-info">
-        <span id="resultCount">匹配结果: 0</span>
+        <span id="resultCount" data-i18n="resultCount">__MSG_resultCount__</span>
         <div class="result-actions">
-          <button id="copyResultsBtn" class="copy-btn" title="复制所有匹配结果">📋 复制结果</button>
+          <button id="copyResultsBtn" class="copy-btn" data-i18n-title="copyResultsTooltip" data-i18n="copyResults">__MSG_copyResults__</button>
           <div class="navigation">
-            <button id="prevBtn" class="nav-btn" title="上一个">◀</button>
+            <button id="prevBtn" class="nav-btn" data-i18n-title="prevMatch">◀</button>
             <span id="currentIndex">- / -</span>
-            <button id="nextBtn" class="nav-btn" title="下一个">▶</button>
+            <button id="nextBtn" class="nav-btn" data-i18n-title="nextMatch">▶</button>
           </div>
         </div>
       </div>
@@ -47,53 +49,72 @@
 
     <div class="history-section">
       <div class="history-header">
-        <span class="history-title">📋 历史记录</span>
+        <span class="history-title" data-i18n="historyTitle">__MSG_historyTitle__</span>
         <div class="history-actions">
           <input type="number" id="historyLimitInput" class="history-limit-input" min="1" max="100" value="20"
-            title="历史记录最大保存数量">
-          <button id="clearHistoryBtn" class="small-btn">清空</button>
+            data-i18n-title="historyLimit">
+          <button id="clearHistoryBtn" class="small-btn" data-i18n="clearButton">__MSG_clearButton__</button>
         </div>
       </div>
       <div id="historyList" class="history-list">
-        <div class="empty-history">暂无搜索记录</div>
+        <div class="empty-history" data-i18n="emptyHistory">__MSG_emptyHistory__</div>
       </div>
     </div>
 
-    <div class="help-section">
+      <div class="help-section">
       <details class="help-details">
-        <summary>常用正则表达式</summary>
+        <summary data-i18n="commonPatterns">__MSG_commonPatterns__</summary>
         <div class="help-content">
-          <div class="help-item" data-pattern="\b[\w.-]+@[\w.-]+\.\w+\b">📧 邮箱地址</div>
-          <div class="help-item" data-pattern="https?://[^\s/$.?#].[^\s]*">🔗 网址链接</div>
-          <div class="help-item" data-pattern="\d{3,4}-\d{7,8}">📞 固定电话</div>
-          <div class="help-item" data-pattern="1[3-9]\d{9}">📱 手机号码</div>
-          <div class="help-item" data-pattern="\d{4}-\d{2}-\d{2}">📅 日期 (YYYY-MM-DD)</div>
-          <div class="help-item" data-pattern="\d{2}:\d{2}">⏰ 时间</div>
-          <div class="help-item" data-pattern="\d{15}|\d{18}|\d{17}[Xx]">🆔 身份证号</div>
-          <div class="help-item" data-pattern="\b\d{1,3}\.\d{1,3}.\d{1,3}.\d{1,3}\b">🌐 IP地址</div>
+          <div class="help-item" data-pattern="\b[\w.-]+@[\w.-]+\.\w+\b" data-i18n="email">__MSG_email__</div>
+          <div class="help-item" data-pattern="https?://[^\s/$.?#].[^\s]*" data-i18n="url">__MSG_url__</div>
+          <div class="help-item" data-pattern="\d{3,4}-\d{7,8}" data-i18n="phone">__MSG_phone__</div>
+          <div class="help-item" data-pattern="1[3-9]\d{9}" data-i18n="mobile">__MSG_mobile__</div>
+          <div class="help-item" data-pattern="\d{4}-\d{2}-\d{2}" data-i18n="date">__MSG_date__</div>
+          <div class="help-item" data-pattern="\d{2}:\d{2}" data-i18n="time">__MSG_time__</div>
+          <div class="help-item" data-pattern="\d{15}|\d{18}|\d{17}[Xx]" data-i18n="idCard">__MSG_idCard__</div>
+          <div class="help-item" data-pattern="\b\d{1,3}\.\d{1,3}.\d{1,3}.\d{1,3}\b" data-i18n="ipAddress">__MSG_ipAddress__</div>
+          <div id="customPatternsList"></div>
         </div>
+
+
+      <div class="help-section">
+        <details class="help-details">
+          <summary data-i18n="addCustomPattern">__MSG_addCustomPattern__</summary>
+          <div class="custom-pattern-form">
+            <div class="form-group">
+              <label for="customPatternName" data-i18n="nameLabel">__MSG_nameLabel__</label>
+              <input type="text" id="customPatternName" class="form-input" data-i18n-placeholder="namePlaceholder">
+            </div>
+            <div class="form-group">
+              <label for="customPatternValue" data-i18n="patternLabel">__MSG_patternLabel__</label>
+              <input type="text" id="customPatternValue" class="form-input pattern-value-input" data-i18n-placeholder="patternPlaceholder">
+            </div>
+            <button id="addCustomPatternBtn" class="add-btn" data-i18n="addButton">__MSG_addButton__</button>
+          </div>
+        </details>
+      </div>
       </details>
       <details class="help-details">
-        <summary>匹配模式</summary>
+        <summary data-i18n="matchingModes">__MSG_matchingModes__</summary>
         <div class="mode-section">
           <div class="flags-container">
-            <label class="flag-label" title="g (global) - 全局匹配：查找所有匹配项，而不是在第一个匹配后停止">
+            <label class="flag-label" data-i18n-title="flagGTooltip">
               <input type="checkbox" id="flagG" checked>
               <span class="flag-checkbox">g</span>
             </label>
-            <label class="flag-label" title="i (ignore case) - 忽略大小写">
+            <label class="flag-label" data-i18n-title="flagITooltip">
               <input type="checkbox" id="flagI" checked>
               <span class="flag-checkbox">i</span>
             </label>
-            <label class="flag-label" title="m (multiline) - 多行模式：改变 ^ 和 $ 的行为，使其匹配每行的开头和结尾，而不仅是整个字符串的开头和结尾">
+            <label class="flag-label" data-i18n-title="flagMTooltip">
               <input type="checkbox" id="flagM" checked>
               <span class="flag-checkbox">m</span>
             </label>
-            <label class="flag-label" title="s (single line/dotall) - 单行模式：使点号 . 匹配包括换行符在内的所有字符">
+            <label class="flag-label" data-i18n-title="flagSTooltip">
               <input type="checkbox" id="flagS">
               <span class="flag-checkbox">s</span>
             </label>
-            <label class="flag-label" title="u (unicode) - Unicode模式：启用完整的Unicode支持">
+            <label class="flag-label" data-i18n-title="flagUTooltip">
               <input type="checkbox" id="flagU">
               <span class="flag-checkbox">u</span>
             </label>
@@ -102,20 +123,28 @@
       </details>
       <div class="settings-content">
         <div class="setting-item">
-          <label for="maxMatchesInput">最大匹配数</label>
+          <label for="maxMatchesInput" data-i18n="maxMatches">__MSG_maxMatches__</label>
           <input type="number" id="maxMatchesInput" class="setting-input" min="1" max="10000" value="1000">
-          <span class="setting-hint">限制搜索结果的数量（1-10000）</span>
+          <span class="setting-hint" data-i18n="maxMatchesHint">__MSG_maxMatchesHint__</span>
+        </div>
+        <div class="setting-item">
+          <label for="opacitySlider" data-i18n="windowOpacity">__MSG_windowOpacity__</label>
+          <div class="slider-container">
+            <input type="range" id="opacitySlider" class="setting-slider" min="20" max="100" value="100">
+            <span id="opacityValue" class="slider-value">100%</span>
+          </div>
+          <span class="setting-hint" data-i18n="opacityHint">__MSG_opacityHint__</span>
+        </div>
         </div>
       </div>
+
+      <footer class="footer">
+      <span class="version" data-i18n="version">__MSG_version__</span>
+      <span class="shortcuts" data-i18n="openShortcut">__MSG_openShortcut__</span>
+      <span class="shortcuts" data-i18n="nextShortcut">__MSG_nextShortcut__</span>
+        <span class="shortcuts" data-i18n="prevShortcut">__MSG_prevShortcut__</span>
+      </footer>
     </div>
-
-    <footer class="footer">
-      <span class="version">v0.1.0</span>
-      <span class="shortcuts">打开: Ctrl+Shift+F</span>
-      <span class="shortcuts">下一个: Enter</span>
-      <span class="shortcuts">上一个: Shift+Enter</span>
-    </footer>
-
 
   </div>
 

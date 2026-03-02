@@ -6,8 +6,9 @@ let currentIndex = 0;
 let originalTextNodes = new Map();
 let scrollbarMarkersContainer = null;
 let scrollMarkerElements = [];
+let currentOpacity = 1;
 
-const CONTAINER_ID = "my-extension-popup-container-123";
+const CONTAINER_ID = "regexp-search-popup-container-id-93d38b5e-4d9a-4b7c-b822-f160b3b8e922";
 
 // 消息监听
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -37,6 +38,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const existingContainer = document.getElementById(CONTAINER_ID);
       if (existingContainer) existingContainer.remove();
       return true;
+
+    case 'ADJUST_HEIGHT':
+      handleAdjustHeight(message.data);
+      sendResponse({ success: true });
+      return true;
+
+    case 'SET_OPACITY':
+      handleSetOpacity(message.data);
+      sendResponse({ success: true });
+      return true;
   }
 });
 
@@ -45,6 +56,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 function createPopup() {
     const container = document.createElement('div');
     container.id = CONTAINER_ID;
+
+    // 加载保存的透明度设置
+    loadOpacity();
+
+    // 创建拖动把手（覆盖在顶部）
+    const dragHandle = document.createElement('div');
+    dragHandle.className = 'popup-drag-handle';
 
     const iframe = document.createElement('iframe');
     // 获取你在 manifest 中暴露的 HTML 路径
@@ -56,25 +74,166 @@ function createPopup() {
         position: 'fixed',
         top: '20px',
         right: '20px',
-        width: '400px',
-        height: '500px',
+        width: '500px',
+        height: 'auto',
+        maxHeight: '80vh',
+        minHeight: '65px',
         zIndex: '2147483647', // 网页允许的最大 z-index
         boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
         borderRadius: '12px',
         overflow: 'hidden',
         border: '1px solid #e0e0e0',
-        backgroundColor: 'transparent'
+        backgroundColor: 'white',
+        transition: 'height 0.3s ease-out'
+    });
+
+    // 设置拖动把手样式
+    Object.assign(dragHandle.style, {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        right: '0',
+        height: '10px',
+        cursor: 'move',
+        zIndex: '1',
+        backgroundColor: '#4285f4'
+
     });
 
     Object.assign(iframe.style, {
         width: '100%',
-        height: '100%',
+        height: '65px',
+        minHeight: '65px',
         border: 'none',
-        display: 'block'
+        display: 'block',
+        marginTop: '0px'
     });
 
+    container.appendChild(dragHandle);
     container.appendChild(iframe);
     document.body.appendChild(container);
+
+    // 添加拖动功能
+    setupDraggable(container);
+}
+
+// 设置容器可拖动
+function setupDraggable(container) {
+    let isDragging = false;
+    let startX, startY, startLeft, startTop;
+
+    // 鼠标按下
+    container.addEventListener('mousedown', (e) => {
+        // 只允许在顶部30px区域或iframe外部拖动
+        const rect = container.getBoundingClientRect();
+        const isDragHandle = e.clientY - rect.top < 30;
+
+        if (isDragHandle || e.target === container) {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startLeft = rect.left;
+            startTop = rect.top;
+
+            // 禁用iframe的鼠标事件，防止拖动中断
+            const iframe = container.querySelector('iframe');
+            if (iframe) {
+                iframe.style.pointerEvents = 'none';
+            }
+
+            e.preventDefault();
+        }
+    });
+
+    // 鼠标移动
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        let newLeft = startLeft + dx;
+        let newTop = startTop + dy;
+
+        // 限制在窗口内
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const containerWidth = container.offsetWidth;
+
+        newLeft = Math.max(0, Math.min(newLeft, windowWidth - containerWidth));
+        newTop = Math.max(0, Math.min(newTop, windowHeight - 50));
+
+        container.style.left = newLeft + 'px';
+        container.style.top = newTop + 'px';
+        container.style.right = 'auto';
+    });
+
+    // 鼠标释放
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+
+            // 恢复iframe的鼠标事件
+            const iframe = container.querySelector('iframe');
+            if (iframe) {
+                iframe.style.pointerEvents = 'auto';
+            }
+        }
+    });
+}
+
+// 处理高度调整
+function handleAdjustHeight(data) {
+    const container = document.getElementById(CONTAINER_ID);
+    if (!container) return;
+
+    const { height } = data;
+
+    // 确保高度在合理范围内
+    const minHeight = 65;
+    const maxHeight = window.innerHeight * 0.8;
+    const adjustedHeight = Math.max(minHeight, Math.min(height, maxHeight));
+
+    // 更新容器高度
+    container.style.height = adjustedHeight + 'px';
+
+    // 更新iframe高度
+    const iframe = container.querySelector('iframe');
+    if (iframe) {
+        // iframe高度减去拖动把手的高度
+        iframe.style.height = (adjustedHeight) + 'px';
+    }
+}
+
+// 处理透明度设置
+function handleSetOpacity(data) {
+    const container = document.getElementById(CONTAINER_ID);
+    if (!container) return;
+
+    const { opacity } = data;
+    currentOpacity = opacity;
+
+    // 应用透明度到容器
+    container.style.opacity = opacity;
+}
+
+// 加载透明度设置
+async function loadOpacity() {
+    try {
+        const result = await chrome.storage.local.get(['opacity']);
+        if (result.opacity !== undefined) {
+            currentOpacity = result.opacity / 100;
+            // 在容器创建后应用透明度
+            setTimeout(() => {
+                const container = document.getElementById(CONTAINER_ID);
+                if (container) {
+                    container.style.opacity = currentOpacity;
+                }
+            }, 0);
+        }
+    } catch (error) {
+        console.error(chrome.i18n.getMessage('consoleLoadOpacityFailed'), error);
+    }
 }
 
 // 处理搜索
@@ -356,7 +515,7 @@ function createScrollbarMarkers() {
 
       // 悬停显示提示
       marker.addEventListener('mouseenter', () => {
-        marker.title = `匹配 ${index + 1}: ${match.text.substring(0, 50)}${match.text.length > 50 ? '...' : ''}`;
+        marker.title = `#${index + 1}: ${match.text.substring(0, 50)}${match.text.length > 50 ? '...' : ''}`;
       });
 
       scrollbarMarkersContainer.appendChild(marker);
@@ -448,4 +607,4 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-console.log('正则表达式搜索插件已加载');
+console.log(chrome.i18n.getMessage('pluginLoaded'));

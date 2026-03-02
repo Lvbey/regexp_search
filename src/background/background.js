@@ -2,8 +2,8 @@
 
 // 插件安装时的事件
 chrome.runtime.onInstalled.addListener((details) => {
-  console.log('正则表达式搜索插件已安装');
-  
+  console.log(chrome.i18n.getMessage('backgroundPluginInstalled'));
+
   if (details.reason === 'install') {
     // 首次安装，显示欢迎信息
     chrome.storage.local.set({
@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     });
   } else if (details.reason === 'update') {
     // 更新版本
-    console.log(`插件已更新到 ${chrome.runtime.getManifest().version}`);
+    console.log(chrome.i18n.getMessage('backgroundPluginUpdated', [chrome.runtime.getManifest().version]));
   }
 });
 
@@ -50,19 +50,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 async function saveSearchHistory(pattern) {
   const result = await chrome.storage.local.get(['searchHistory']);
   let history = result.searchHistory || [];
-  
+
   // 移除重复项
   history = history.filter(item => item !== pattern);
-  
+
   // 添加到开头
   history.unshift(pattern);
-  
+
   // 限制数量（最多保存20条）
   const HISTORY_MAX = 20;
   if (history.length > HISTORY_MAX) {
     history = history.slice(0, HISTORY_MAX);
   }
-  
+
   await chrome.storage.local.set({ searchHistory: history });
 }
 
@@ -92,16 +92,16 @@ chrome.tabs.onActivated.addListener(async (activeInfo) => {
 chrome.action.onClicked.addListener((tab) => {
     // 向当前活跃页面的 content script 发送消息
     chrome.tabs.sendMessage(tab.id, { action: "toggle_popup" }).catch((err) => {
-        console.log("当前页面无法注入脚本 (例如 chrome:// 页面或尚未完全加载)");
+        console.log(chrome.i18n.getMessage('backgroundScriptInjectFailed'));
         chrome.notifications.create({
           type: 'basic',
           iconUrl: '/icons/icon32.png',
-          title: '操作受限',
-          message: '无法读取或更改此网站（例如 chrome://、应用商店）的数据，请在另外的常规页面上重试。',
+          title: chrome.i18n.getMessage('backgroundOperationRestricted'),
+          message: chrome.i18n.getMessage('backgroundCannotAccessPage'),
           priority: 2
         });
     });
 });
 
 
-console.log('正则表达式搜索插件后台脚本已加载');
+console.log(chrome.i18n.getMessage('backgroundScriptLoaded'));

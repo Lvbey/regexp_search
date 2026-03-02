@@ -1,0 +1,335 @@
+{
+  "extensionName": {
+    "message": "正则表达式搜索",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "在Chrome浏览器中支持正则表达式的页面搜索功能",
+    "description": "Description of the extension"
+  },
+  "searchPlaceholder": {
+    "message": "输入正则表达式...",
+    "description": "Placeholder text in search input"
+  },
+  "searchButton": {
+    "message": "搜索",
+    "description": "Search button text"
+  },
+  "toggleButton": {
+    "message": "展开/收起更多功能",
+    "description": "Toggle button tooltip"
+  },
+  "closeButton": {
+    "message": "关闭搜索窗口",
+    "description": "Close button tooltip"
+  },
+  "resultCount": {
+    "message": "匹配结果: $count$",
+    "description": "Match count display",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "copyResults": {
+    "message": "📋 复制结果",
+    "description": "Copy results button text"
+  },
+  "prevMatch": {
+    "message": "上一个",
+    "description": "Previous match button tooltip"
+  },
+  "nextMatch": {
+    "message": "下一个",
+    "description": "Next match button tooltip"
+  },
+  "historyTitle": {
+    "message": "📋 历史记录",
+    "description": "History section title"
+  },
+  "historyLimit": {
+    "message": "历史记录最大保存数量",
+    "description": "History limit input tooltip"
+  },
+  "clearButton": {
+    "message": "清空",
+    "description": "Clear button text"
+  },
+  "clearMatches": {
+    "message": "清除高亮",
+    "description": "Clear highlights button tooltip"
+  },
+  "emptyHistory": {
+    "message": "暂无搜索记录",
+    "description": "Empty history message"
+  },
+  "commonPatterns": {
+    "message": "常用正则表达式",
+    "description": "Common patterns section title"
+  },
+  "email": {
+    "message": "📧 邮箱地址",
+    "description": "Email pattern"
+  },
+  "url": {
+    "message": "🔗 网址链接",
+    "description": "URL pattern"
+  },
+  "phone": {
+    "message": "📞 固定电话",
+    "description": "Phone pattern"
+  },
+  "mobile": {
+    "message": "📱 手机号码",
+    "description": "Mobile pattern"
+  },
+  "date": {
+    "message": "📅 日期 (YYYY-MM-DD)",
+    "description": "Date pattern"
+  },
+  "time": {
+    "message": "⏰ 时间",
+    "description": "Time pattern"
+  },
+  "idCard": {
+    "message": "🆔 身份证号",
+    "description": "ID card pattern"
+  },
+  "ipAddress": {
+    "message": "🌐 IP地址",
+    "description": "IP address pattern"
+  },
+  "addCustomPattern": {
+    "message": "添加自定义正则表达式",
+    "description": "Add custom pattern section title"
+  },
+  "nameLabel": {
+    "message": "名称",
+    "description": "Name label"
+  },
+  "namePlaceholder": {
+    "message": "例如: 邮编",
+    "description": "Name input placeholder"
+  },
+  "patternLabel": {
+    "message": "正则表达式",
+    "description": "Pattern label"
+  },
+  "patternPlaceholder": {
+    "message": "例如: \\d{6}",
+    "description": "Pattern input placeholder"
+  },
+  "addButton": {
+    "message": "➕ 添加",
+    "description": "Add button text"
+  },
+  "matchingModes": {
+    "message": "匹配模式",
+    "description": "Matching modes section title"
+  },
+  "settings": {
+    "message": "设置",
+    "description": "Settings section title"
+  },
+  "maxMatches": {
+    "message": "最大匹配数",
+    "description": "Max matches label"
+  },
+  "maxMatchesHint": {
+    "message": "限制搜索结果的数量（1-10000）",
+    "description": "Max matches hint"
+  },
+  "windowOpacity": {
+    "message": "窗口透明度",
+    "description": "Opacity label"
+  },
+  "opacityHint": {
+    "message": "调整搜索窗口的透明度（20%-100%）",
+    "description": "Opacity hint"
+  },
+  "openShortcut": {
+    "message": "打开: Ctrl+Shift+F",
+    "description": "Open shortcut"
+  },
+  "nextShortcut": {
+    "message": "下一个: Enter",
+    "description": "Next match shortcut"
+  },
+  "prevShortcut": {
+    "message": "上一个: Shift+Enter",
+    "description": "Previous match shortcut"
+  },
+  "version": {
+    "message": "v0.1.0",
+    "description": "Version number"
+  },
+  "copied": {
+    "message": "✓ 已复制",
+    "description": "Copied success message"
+  },
+  "noResults": {
+    "message": "没有可复制的匹配结果",
+    "description": "No copy results message"
+  },
+  "copyFailed": {
+    "message": "复制失败，请重试",
+    "description": "Copy failed message"
+  },
+  "patternRequired": {
+    "message": "请输入正则表达式",
+    "description": "Pattern required error"
+  },
+  "invalidPattern": {
+    "message": "无效的正则表达式: $error$",
+    "description": "Invalid pattern error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Unexpected token"
+      }
+    }
+  },
+  "nameRequired": {
+    "message": "请输入名称",
+    "description": "Name required error"
+  },
+  "patternValueRequired": {
+    "message": "请输入正则表达式",
+    "description": "Pattern value required error"
+  },
+  "nameExists": {
+    "message": "该名称已存在",
+    "description": "Name exists error"
+  },
+  "unsupportedPage": {
+    "message": "此页面不支持搜索，请访问普通网页或者刷新后重试",
+    "description": "Unsupported page error"
+  },
+  "connectionLost": {
+    "message": "无法连接到页面，请刷新页面或尝试其他页面",
+    "description": "Connection lost error"
+  },
+  "pageDisconnected": {
+    "message": "页面连接已断开，请重新搜索",
+    "description": "Page disconnected error"
+  },
+  "copiedSuccess": {
+    "message": "复制失败，请重试",
+    "description": "Copy failed message"
+  },
+  "copyResultsTooltip": {
+    "message": "复制所有匹配结果",
+    "description": "Copy results tooltip"
+  },
+  "flagGTooltip": {
+    "message": "g (global) - 全局匹配：查找所有匹配项，而不是在第一个匹配后停止",
+    "description": "Flag G tooltip"
+  },
+  "flagITooltip": {
+    "message": "i (ignore case) - 忽略大小写",
+    "description": "Flag I tooltip"
+  },
+  "flagMTooltip": {
+    "message": "m (multiline) - 多行模式：改变 ^ 和 $ 的行为，使其匹配每行的开头和结尾",
+    "description": "Flag M tooltip"
+  },
+  "flagSTooltip": {
+    "message": "s (dotall) - 单行模式：使点号 . 匹配包括换行符在内的所有字符",
+    "description": "Flag S tooltip"
+  },
+  "flagUTooltip": {
+    "message": "u (unicode) - Unicode模式：启用完整的Unicode支持",
+    "description": "Flag U tooltip"
+  },
+  "extensionNameIcon": {
+    "message": "🔍 正则表达式搜索",
+    "description": "Extension name with icon"
+  },
+  "consoleInitFailed": {
+    "message": "初始化失败",
+    "description": "Console initialization failed error"
+  },
+  "consoleLoadSettingsFailed": {
+    "message": "加载设置失败",
+    "description": "Console load settings failed error"
+  },
+  "consoleSaveSettingsFailed": {
+    "message": "保存设置失败",
+    "description": "Console save settings failed error"
+  },
+  "consoleNavigationFailed": {
+    "message": "导航失败",
+    "description": "Console navigation failed error"
+  },
+  "consoleClearHighlightsFailed": {
+    "message": "清除高亮失败",
+    "description": "Console clear highlights failed error"
+  },
+  "consoleCopyFailed": {
+    "message": "复制失败",
+    "description": "Console copy failed error"
+  },
+  "consoleLoadHistoryFailed": {
+    "message": "加载搜索历史失败",
+    "description": "Console load history failed error"
+  },
+  "consoleLoadPatternsFailed": {
+    "message": "加载自定义正则表达式失败",
+    "description": "Console load patterns failed error"
+  },
+  "consoleSavePatternsFailed": {
+    "message": "保存自定义正则表达式失败",
+    "description": "Console save patterns failed error"
+  },
+  "deleteTooltip": {
+    "message": "删除",
+    "description": "Delete tooltip"
+  },
+  "consoleLoadOpacityFailed": {
+    "message": "加载透明度设置失败",
+    "description": "Console load opacity failed error"
+  },
+  "pluginLoaded": {
+    "message": "正则表达式搜索插件已加载",
+    "description": "Plugin loaded message"
+  },
+  "backgroundPluginInstalled": {
+    "message": "正则表达式搜索插件已安装",
+    "description": "Background plugin installed message"
+  },
+  "backgroundPluginUpdated": {
+    "message": "插件已更新到 $version$",
+    "description": "Background plugin updated message",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "backgroundScriptLoaded": {
+    "message": "正则表达式搜索插件后台脚本已加载",
+    "description": "Background script loaded message"
+  },
+  "backgroundScriptInjectFailed": {
+    "message": "当前页面无法注入脚本 (例如 chrome:// 页面或尚未完全加载)",
+    "description": "Background script inject failed message"
+  },
+  "backgroundOperationRestricted": {
+    "message": "操作受限",
+    "description": "Background operation restricted title"
+  },
+  "backgroundCannotAccessPage": {
+    "message": "无法读取或更改此网站（例如 chrome://、应用商店）的数据，请在另外的常规页面上重试。",
+    "description": "Background cannot access page message"
+  },
+  "errorInvalidPatternFormat": {
+    "message": "无效的正则表达式格式",
+    "description": "Error message for invalid pattern format"
+  },
+  "errorNoResultTooltip": {
+    "message": "匹配",
+    "description": "Tooltip text for marker"
+  }
+}

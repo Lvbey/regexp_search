@@ -1,0 +1,335 @@
+{
+  "extensionName": {
+    "message": "Regular Expression Search",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Support regular expression page search functionality in Chrome browser",
+    "description": "Description of the extension"
+  },
+  "searchPlaceholder": {
+    "message": "Enter regular expression...",
+    "description": "Placeholder text in search input"
+  },
+  "searchButton": {
+    "message": "Search",
+    "description": "Search button text"
+  },
+  "toggleButton": {
+    "message": "Expand/Collapse More Features",
+    "description": "Toggle button tooltip"
+  },
+  "closeButton": {
+    "message": "Close Search Window",
+    "description": "Close button tooltip"
+  },
+  "resultCount": {
+    "message": "Matches: $count$",
+    "description": "Match count display",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "copyResults": {
+    "message": "📋 Copy Results",
+    "description": "Copy results button text"
+  },
+  "prevMatch": {
+    "message": "Previous",
+    "description": "Previous match button tooltip"
+  },
+  "nextMatch": {
+    "message": "Next",
+    "description": "Next match button tooltip"
+  },
+  "historyTitle": {
+    "message": "📋 Search History",
+    "description": "History section title"
+  },
+  "historyLimit": {
+    "message": "History max saved count",
+    "description": "History limit input tooltip"
+  },
+  "clearButton": {
+    "message": "Clear",
+    "description": "Clear button text"
+  },
+  "clearMatches": {
+    "message": "Clear Highlights",
+    "description": "Clear highlights button tooltip"
+  },
+  "emptyHistory": {
+    "message": "No search records",
+    "description": "Empty history message"
+  },
+  "commonPatterns": {
+    "message": "Common Regular Expressions",
+    "description": "Common patterns section title"
+  },
+  "email": {
+    "message": "📧 Email Address",
+    "description": "Email pattern"
+  },
+  "url": {
+    "message": "🔗 URL Link",
+    "description": "URL pattern"
+  },
+  "phone": {
+    "message": "📞 Fixed Phone",
+    "description": "Phone pattern"
+  },
+  "mobile": {
+    "message": "📱 Mobile Phone",
+    "description": "Mobile pattern"
+  },
+  "date": {
+    "message": "📅 Date (YYYY-MM-DD)",
+    "description": "Date pattern"
+  },
+  "time": {
+    "message": "⏰ Time",
+    "description": "Time pattern"
+  },
+  "idCard": {
+    "message": "🆔 ID Card Number",
+    "description": "ID card pattern"
+  },
+  "ipAddress": {
+    "message": "🌐 IP Address",
+    "description": "IP address pattern"
+  },
+  "addCustomPattern": {
+    "message": "Add Custom Regex Pattern",
+    "description": "Add custom pattern section title"
+  },
+  "nameLabel": {
+    "message": "Name",
+    "description": "Name label"
+  },
+  "namePlaceholder": {
+    "message": "e.g., Zip Code",
+    "description": "Name input placeholder"
+  },
+  "patternLabel": {
+    "message": "Regular Expression",
+    "description": "Pattern label"
+  },
+  "patternPlaceholder": {
+    "message": "e.g., \\d{6}",
+    "description": "Pattern input placeholder"
+  },
+  "addButton": {
+    "message": "➕ Add",
+    "description": "Add button text"
+  },
+  "matchingModes": {
+    "message": "Matching Modes",
+    "description": "Matching modes section title"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Settings section title"
+  },
+  "maxMatches": {
+    "message": "Max Matches",
+    "description": "Max matches label"
+  },
+  "maxMatchesHint": {
+    "message": "Limit search result count (1-10000)",
+    "description": "Max matches hint"
+  },
+  "windowOpacity": {
+    "message": "Window Opacity",
+    "description": "Opacity label"
+  },
+  "opacityHint": {
+    "message": "Adjust search window opacity (20%-100%)",
+    "description": "Opacity hint"
+  },
+  "openShortcut": {
+    "message": "Open: Ctrl+Shift+F",
+    "description": "Open shortcut"
+  },
+  "nextShortcut": {
+    "message": "Next: Enter",
+    "description": "Next match shortcut"
+  },
+  "prevShortcut": {
+    "message": "Prev: Shift+Enter",
+    "description": "Previous match shortcut"
+  },
+  "version": {
+    "message": "v0.1.0",
+    "description": "Version number"
+  },
+  "copied": {
+    "message": "✓ Copied",
+    "description": "Copied success message"
+  },
+  "noResults": {
+    "message": "No results to copy",
+    "description": "No copy results message"
+  },
+  "copyFailed": {
+    "message": "Copy failed, please try again",
+    "description": "Copy failed message"
+  },
+  "patternRequired": {
+    "message": "Please enter regular expression",
+    "description": "Pattern required error"
+  },
+  "invalidPattern": {
+    "message": "Invalid regular expression: $error$",
+    "description": "Invalid pattern error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Unexpected token"
+      }
+    }
+  },
+  "nameRequired": {
+    "message": "Please enter name",
+    "description": "Name required error"
+  },
+  "patternValueRequired": {
+    "message": "Please enter regular expression",
+    "description": "Pattern value required error"
+  },
+  "nameExists": {
+    "message": "This name already exists",
+    "description": "Name exists error"
+  },
+  "unsupportedPage": {
+    "message": "This page is not supported, please visit a regular webpage or refresh and try again",
+    "description": "Unsupported page error"
+  },
+  "connectionLost": {
+    "message": "Could not connect to page, please refresh or try another page",
+    "description": "Connection lost error"
+  },
+  "pageDisconnected": {
+    "message": "Page connection lost, please search again",
+    "description": "Page disconnected error"
+  },
+  "copiedSuccess": {
+    "message": "Copied failed, please try again",
+    "description": "Copy failed message"
+  },
+  "copyResultsTooltip": {
+    "message": "Copy all matched results",
+    "description": "Copy results tooltip"
+  },
+  "flagGTooltip": {
+    "message": "g (global) - Find all matches instead of stopping after the first match",
+    "description": "Flag G tooltip"
+  },
+  "flagITooltip": {
+    "message": "i (ignore case) - Case-insensitive matching",
+    "description": "Flag I tooltip"
+  },
+  "flagMTooltip": {
+    "message": "m (multiline) - Multi-line mode: change behavior of ^ and $ to match line start/end",
+    "description": "Flag M tooltip"
+  },
+  "flagSTooltip": {
+    "message": "s (dotall) - Single line mode: make dot . match any character including newline",
+    "description": "Flag S tooltip"
+  },
+  "flagUTooltip": {
+    "message": "u (unicode) - Unicode mode: enable full Unicode support",
+    "description": "Flag U tooltip"
+  },
+  "extensionNameIcon": {
+    "message": "🔍 Regular Expression Search",
+    "description": "Extension name with icon"
+  },
+  "consoleInitFailed": {
+    "message": "Initialization failed",
+    "description": "Console initialization failed error"
+  },
+  "consoleLoadSettingsFailed": {
+    "message": "Failed to load settings",
+    "description": "Console load settings failed error"
+  },
+  "consoleSaveSettingsFailed": {
+    "message": "Failed to save settings",
+    "description": "Console save settings failed error"
+  },
+  "consoleNavigationFailed": {
+    "message": "Navigation failed",
+    "description": "Console navigation failed error"
+  },
+  "consoleClearHighlightsFailed": {
+    "message": "Failed to clear highlights",
+    "description": "Console clear highlights failed error"
+  },
+  "consoleCopyFailed": {
+    "message": "Copy failed",
+    "description": "Console copy failed error"
+  },
+  "consoleLoadHistoryFailed": {
+    "message": "Failed to load search history",
+    "description": "Console load history failed error"
+  },
+  "consoleLoadPatternsFailed": {
+    "message": "Failed to load custom patterns",
+    "description": "Console load patterns failed error"
+  },
+  "consoleSavePatternsFailed": {
+    "message": "Failed to save custom patterns",
+    "description": "Console save patterns failed error"
+  },
+  "deleteTooltip": {
+    "message": "Delete",
+    "description": "Delete tooltip"
+  },
+  "consoleLoadOpacityFailed": {
+    "message": "Failed to load opacity settings",
+    "description": "Console load opacity failed error"
+  },
+  "pluginLoaded": {
+    "message": "Regular Expression Search plugin loaded",
+    "description": "Plugin loaded message"
+  },
+  "backgroundPluginInstalled": {
+    "message": "Regular Expression Search plugin installed",
+    "description": "Background plugin installed message"
+  },
+  "backgroundPluginUpdated": {
+    "message": "Plugin updated to $version$",
+    "description": "Background plugin updated message",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "backgroundScriptLoaded": {
+    "message": "Regular Expression Search background script loaded",
+    "description": "Background script loaded message"
+  },
+  "backgroundScriptInjectFailed": {
+    "message": "Cannot inject script into current page (e.g., chrome:// pages or not fully loaded)",
+    "description": "Background script inject failed message"
+  },
+  "backgroundOperationRestricted": {
+    "message": "Operation restricted",
+    "description": "Background operation restricted title"
+  },
+  "backgroundCannotAccessPage": {
+    "message": "Cannot read or modify data for this website (e.g., chrome://, App Store). Please try on another regular webpage.",
+    "description": "Background cannot access page message"
+  },
+  "errorInvalidPatternFormat": {
+    "message": "Invalid regular expression format",
+    "description": "Error message for invalid pattern format"
+  },
+  "errorNoResultTooltip": {
+    "message": "Match",
+    "description": "Tooltip text for marker"
+  }
+}
